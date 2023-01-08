@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Atualizar produtos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="../assets/css/base/base.css">
+    <link rel="stylesheet" href="../assets/css/componentes/cabecalho.css">
+    <link rel="stylesheet" href="../assets/css/componentes/cartao.css">
+    <link rel="stylesheet" href="../assets/css/cadastra_cliente.css">
+    <link rel="stylesheet" href="../assets/css/componentes/inputs.css">
+    <link rel="stylesheet" href="../assets/css/componentes/botao.css">
+</head>
+<body>
+    <header class="cabecalho container">
+        <a href="#">
+            <h1 class="navbar-logo">logo</h1>
+          </a>
+        <nav>
+            <ul class="cabecalho__lista-navegacao">
+                <li class="cabecalho__link"><a href="#">Dashboard</a></li>
+                <li class="cabecalho__link"><a href="lista_produtos.html">Inventário</a></li>
+                <li class="cabecalho__link"><a href="#">Sign In</a></li>
+                <li class="cabecalho__link"><a href="#">Configurações</a></li>
+                <li class="cabecalho__link"><a href="#">Notificações</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="container flex flex--centro flex--coluna">
+        <section class="cartao cadastro">
+            <h1 class="cartao__titulo">Edição</h1>
+            <form class="flex flex--coluna" data-form onsubmit="return validateQuantity(this)">
+                <div class="input-container">
+                    <input name="produtor" id="produtor" class="input" type="text" placeholder="Nome" required data-produtor>
+                    <label class="input-label" for="nome">produtor</label>
+                    <span class="input-mensagem-erro">Esse campo não pode estar vazio</span>
+                </div>
+                <div class="input-container">
+                    <input name="nome" id="nome" class="input" type="text" placeholder="Nome" required data-nome>
+                    <label class="input-label" for="email" >nome do produto</label>
+                    <span class="input-mensagem-erro">Esse campo não pode estar vazio</span>
+                </div>
+                <div class="formulario__dupla">
+             <div class="formulario__campo">
+                <div class="input-container">
+                    <label for="category">Categoria:</label>
+                    <select id="category" name="category" style="margin-top: 16px;">
+                    <option value="" hidden>Escolha uma categoria</option>
+                    <option value="fruits">Frutas</option>
+                    <option value="vegetables">Vegetais</option>
+                    <option value="dry_fruits">Frutos Secos</option>
+                </select>
+                 </div>
+              </div>
+            <div class="formulario__campo">
+              <div class="input-container">
+                <label for="quantity">Quantidade:</label><br>
+                <input type="number" id="quantity" class="input" onfocus="displayInstructions()" pattern="[1-99]|100" value="1" min="1" max="100" title="Por favor, digite um número inteiro entre 1 e 100.">
+                <span id="instructions" style="display:none; margin-top: 15px;">Por favor, digite um número inteiro entre 1 a 100.</span><br>
+              </div>
+            </div>
+                <script>
+                    function displayInstructions() {
+                      document.getElementById("instructions").style.display = "inline";
+                    }
+                    function validateQuantity(form) {
+                    var quantity = form.quantity.value;
+                    if (quantity < 1 || quantity > 10 || !Number.isInteger(quantity)) {
+                    document.getElementById("instructions").style.display = "inline";
+                    return false;
+                    }
+                    return true;
+                }
+                  </script>
+              </div>
+                <button type="submit"class="botao">
+                Editar produto
+            </button>
+            </form>
+        </section>
+    </main>
+    <script type="module" src="../controller/atualizaProdutos-controller.js"></script>
+</body>
+
+</html>
