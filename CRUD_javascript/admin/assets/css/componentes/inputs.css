@@ -184,3 +184,10 @@ select {
     background-color: #44475a;
     font-weight: normal;
   }
+
+
+  #quantity {
+
+    width: 100px;
+  }
+  

@@ -15,7 +15,7 @@ import { produtoService } from '../service/produtos-service.js'
   }
   catch(erro){
     console.log(erro)
-    window.location.href="../telas/erro.html"
+    window.location.href="../public/erro.html"
   }
 
   
@@ -26,11 +26,11 @@ import { produtoService } from '../service/produtos-service.js'
     evento.preventDefault()
     try {
       await produtoService.atualizaProdutos(id, inputProdutor.value, inputNome.value)
-      window.location.href = "../telas/edicao_concluida.html"
+      window.location.href = "../public/edicao_concluida.html"
     }
     catch(erro){
       console.log(erro)
-      window.location.href="../telas/erro.html"
+      window.location.href="../public/erro.html"
     }
   })
 })()
